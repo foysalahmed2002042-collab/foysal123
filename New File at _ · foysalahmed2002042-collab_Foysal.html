@@ -61,3 +61,95 @@ do
         *) echo "Invalid Choice" ;;
     esac
 done
+
+
+
+
+
+        Problem 2:
+
+
+
+
+        #!/bin/bash
+
+read -p "Enter starting year: " start
+read -p "Enter ending year: " end
+
+count=0
+
+echo "Leap Years between $start and $end:"
+
+for ((year=start; year<=end; year++))
+do
+    if (( (year%4==0 && year%100!=0) || year%400==0 )); then
+        echo "$year"
+        count=$((count+1))
+    fi
+done
+
+echo "------------------------"
+echo "Total Leap Years = $count"
+
+
+
+
+    problem 3 :
+
+
+    #!/bin/bash
+
+pass_count=0
+fail_count=0
+
+read -p "Enter number of students: " n
+
+for ((i=1; i<=n; i++))
+do
+    echo "-----------------------------"
+    read -p "Enter Student ID: " sid
+    read -p "Enter marks of Subject 1: " m1
+    read -p "Enter marks of Subject 2: " m2
+    read -p "Enter marks of Subject 3: " m3
+
+    total=$((m1 + m2 + m3))
+    percentage=$((total * 100 / 300))
+
+    
+    if [ $percentage -ge 80 ]; then
+        grade="A+"
+        result="Pass"
+        pass_count=$((pass_count+1))
+    elif [ $percentage -ge 70 ]; then
+        grade="A"
+        result="Pass"
+        pass_count=$((pass_count+1))
+    elif [ $percentage -ge 60 ]; then
+        grade="B"
+        result="Pass"
+        pass_count=$((pass_count+1))
+    elif [ $percentage -ge 50 ]; then
+        grade="C"
+        result="Pass"
+        pass_count=$((pass_count+1))
+    else
+        grade="F"
+        result="Fail"
+        fail_count=$((fail_count+1))
+    fi
+
+    echo "----- Student Result -----"
+    echo "Student ID   : $sid"
+    echo "Total Marks  : $total / 300"
+    echo "Percentage   : $percentage%"
+    echo "Grade        : $grade"
+    echo "Result       : $result"
+done
+
+echo "=============================="
+echo "Final Summary"
+echo "Total Students : $n"
+echo "Passed         : $pass_count"
+echo "Failed         : $fail_count"
+
+
